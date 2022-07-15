@@ -1,8 +1,10 @@
-local class = require "external.middleclass"
-local ScreenElement = require "lib.screen.elements.screen_element"
-local ScreenSprite = require "lib.screen.elements.screen_sprite"
+local path = (...):gsub("screen_sprite_9patch", "")
+local lib_directory = path:gsub("screen.elements.", "")
 
-local ScreenSprite9Patch = class("ScreenSprite9Patch", ScreenElement)
+local ScreenElement = require (lib_directory .. "screen.elements.screen_element")
+local ScreenSprite = require (lib_directory .. "screen.elements.screen_sprite")
+
+local ScreenSprite9Patch = insight2d.class("ScreenSprite9Patch", ScreenElement)
 
 function ScreenSprite9Patch:initialize(texture, quads, size)
     ScreenElement.initialize(self)

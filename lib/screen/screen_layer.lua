@@ -1,7 +1,9 @@
-local class = require "external.middleclass"
+local path = (...):gsub("screen_layer", "")
+local lib_directory = path:gsub("screen.", "")
 
-local Renderer = require "lib.renderer.renderer"
-local ScreenLayer = class("ScreenLayer")
+local Renderer = require (lib_directory .. "renderer.renderer")
+
+local ScreenLayer = insight2d.class("ScreenLayer")
 
 function ScreenLayer:initialize()
     self._elements = {}

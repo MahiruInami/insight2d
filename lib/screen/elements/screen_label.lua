@@ -1,7 +1,9 @@
-local class = require "external.middleclass"
-local ScreenElement = require "lib.screen.elements.screen_element"
+local path = (...):gsub("screen_label", "")
+local lib_directory = path:gsub("screen.elements.", "")
 
-local ScreenLabel = class("ScreenLabel", ScreenElement)
+
+local ScreenElement = require (lib_directory .. "screen.elements.screen_element")
+local ScreenLabel = insight2d.class("ScreenLabel", ScreenElement)
 
 function ScreenLabel:initialize(font, text, align, limit)
     ScreenElement.initialize(self)

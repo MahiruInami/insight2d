@@ -1,6 +1,4 @@
-local class = require "external.middleclass"
-
-local Camera = class("Camera")
+local Camera = insight2d.class("Camera")
 
 function Camera:initialize()
     self._x = -love.graphics.getWidth() / 2

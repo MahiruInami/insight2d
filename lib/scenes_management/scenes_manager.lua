@@ -1,6 +1,4 @@
-local class = require "external.middleclass"
-
-local ScenesManager = class("ScenesManager")
+local ScenesManager = insight2d.class("ScenesManager")
 
 function ScenesManager:initialize()
     self._currentScene = nil

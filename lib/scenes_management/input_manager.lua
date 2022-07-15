@@ -1,7 +1,8 @@
-local class = require "external.middleclass"
+local path = (...):gsub("input_manager", "")
+local lib_directory = path:gsub("scenes_management.", "")
 
-local Touch = require "lib.scenes_management.input.touch"
-local InputManager = class("InputManager")
+local Touch = require (lib_directory .. "scenes_management.input.touch")
+local InputManager = insight2d.class("InputManager")
 
 function InputManager:initialize()
     self._is_update = false

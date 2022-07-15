@@ -1,10 +1,12 @@
-local class = require "external.middleclass"
-local AssetsManager = require "lib.assets_manager.assets_manager"
-local Camera = require "lib.scenes_management.camera"
-local InputManger = require "lib.scenes_management.input_manager"
-local ScreenManager = require "lib.screen.screen_manager"
+local path = (...):gsub("base_scene", "")
+local lib_directory = path:gsub("scenes_management.", "")
 
-local BaseScene = class("BaseScene")
+local AssetsManager = require (lib_directory .. "assets_manager.assets_manager")
+local Camera = require (lib_directory .. "scenes_management.camera")
+local InputManger = require (lib_directory .. "scenes_management.input_manager")
+local ScreenManager = require (lib_directory .. "screen.screen_manager")
+
+local BaseScene = insight2d.class("BaseScene")
 
 function BaseScene:initialize()
     self.assets_manager = AssetsManager:new()

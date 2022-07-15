@@ -1,9 +1,8 @@
-local class = require "external.middleclass"
-local batteries = require "external.batteries"
-local flux = require 'external.flux.flux'
-local ScreenSprite = require "lib.screen.elements.screen_sprite"
+local path = (...):gsub("screen_button", "")
+local lib_directory = path:gsub("screen.elements.", "")
 
-local ScreenButton = class("ScreenButton", ScreenSprite)
+local ScreenSprite = require (lib_directory .. "screen.elements.screen_sprite")
+local ScreenButton = insight2d.class("ScreenButton", ScreenSprite)
 
 function ScreenButton:initialize(texture, quad)
     ScreenSprite.initialize(self, texture, quad)
@@ -24,7 +23,7 @@ function ScreenButton:update(dt)
     ScreenSprite.update(self, dt)
 
     if self._tween then
-        flux.update(dt)
+        insight2d.flux.update(dt)
         self:setScale(self._tween_params.scale, self._tween_params.scale)
     end
 end
@@ -39,7 +38,7 @@ function ScreenButton:touchBegin(touch, parent_transform)
     if local_x >= 0 and local_y >= 0 and local_x <= self._width and local_y <= self._height then
         touch:captureTarget(self)
         self._is_touched = true
-        self._tween = flux.to(self._tween_params, 0.3, {scale = 0.8}):ease("backout")
+        self._tween = insight2d.flux.to(self._tween_params, 0.3, {scale = 0.8}):ease("backout")
     end
 end
 
@@ -55,7 +54,7 @@ function ScreenButton:touchEnded(touch, parent_transform)
             self._on_click()
         end
 
-        self._tween = flux.to(self._tween_params, 0.2, {scale = 1.1}):ease("backout"):after(self._tween_params, 0.1, {scale = 1.0})
+        self._tween = insight2d.flux.to(self._tween_params, 0.2, {scale = 1.1}):ease("backout"):after(self._tween_params, 0.1, {scale = 1.0})
     end
 end
 

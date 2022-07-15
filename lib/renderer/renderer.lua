@@ -1,6 +1,4 @@
-local class = require "external.middleclass"
-
-local Renderer = class("Renderer")
+local Renderer = insight2d.class("Renderer")
 
 function Renderer:initialize()
 

@@ -1,6 +1,4 @@
-local class = require "external.middleclass"
-
-local ScreenElement = class("ScreenElement")
+local ScreenElement = insight2d.class("ScreenElement")
 
 function ScreenElement:initialize()
     self._pos_x = 0

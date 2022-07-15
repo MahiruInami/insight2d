@@ -1,6 +1,4 @@
-local class = require "external.middleclass"
-
-local ScreenManager = class("ScreenManager")
+local ScreenManager = insight2d.class("ScreenManager")
 
 function ScreenManager:initialize()
     self._screens = {}

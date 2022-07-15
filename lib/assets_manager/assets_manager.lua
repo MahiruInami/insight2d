@@ -1,6 +1,4 @@
-local class = require "external.middleclass"
-
-local AssetsManager = class("AssetsManager")
+local AssetsManager = insight2d.class("AssetsManager")
 
 function AssetsManager:initialize()
     self._textures = {}

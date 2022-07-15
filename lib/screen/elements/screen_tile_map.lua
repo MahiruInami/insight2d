@@ -1,7 +1,9 @@
-local class = require "external.middleclass"
-local ScreenElement = require "lib.screen.elements.screen_element"
+local path = (...):gsub("screen_tile_map", "")
+local lib_directory = path:gsub("screen.elements.", "")
 
-local ScreenTileMap = class("ScreenTileMap", ScreenElement)
+local ScreenElement = require (lib_directory .. "screen.elements.screen_element")
+
+local ScreenTileMap = insight2d.class("ScreenTileMap", ScreenElement)
 
 function ScreenTileMap:initialize(texture)
     ScreenElement.initialize(self)

@@ -1,6 +1,4 @@
-local class = require "external.middleclass"
-
-local Touch = class("Touch")
+local Touch = insight2d.class("Touch")
 
 Touch.static.MOUSE_BASE_ID = 100
 Touch.static.CLICK_TIME_DIFF = 0.12
