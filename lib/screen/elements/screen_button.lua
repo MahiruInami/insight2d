@@ -1,7 +1,4 @@
-local path = (...):gsub("screen_button", "")
-local lib_directory = path:gsub("screen.elements.", "")
-
-local ScreenSprite = require (lib_directory .. "screen.elements.screen_sprite")
+local ScreenSprite = insight2d.require("screen.elements.screen_sprite")
 local ScreenButton = insight2d.class("ScreenButton", ScreenSprite)
 
 function ScreenButton:initialize(texture, quad)

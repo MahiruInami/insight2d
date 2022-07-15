@@ -1,7 +1,7 @@
 local path = (...):gsub("screen_layer", "")
 local lib_directory = path:gsub("screen.", "")
 
-local Renderer = require (lib_directory .. "renderer.renderer")
+local Renderer = insight2d.require("renderer.renderer")
 
 local ScreenLayer = insight2d.class("ScreenLayer")
 

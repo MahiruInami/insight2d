@@ -1,8 +1,5 @@
-local path = (...):gsub("screen_sprite_9patch", "")
-local lib_directory = path:gsub("screen.elements.", "")
-
-local ScreenElement = require (lib_directory .. "screen.elements.screen_element")
-local ScreenSprite = require (lib_directory .. "screen.elements.screen_sprite")
+local ScreenElement = insight2d.require("screen.elements.screen_element")
+local ScreenSprite = insight2d.require("screen.elements.screen_sprite")
 
 local ScreenSprite9Patch = insight2d.class("ScreenSprite9Patch", ScreenElement)
 

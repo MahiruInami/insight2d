@@ -1,8 +1,4 @@
-local path = (...):gsub("screen_label", "")
-local lib_directory = path:gsub("screen.elements.", "")
-
-
-local ScreenElement = require (lib_directory .. "screen.elements.screen_element")
+local ScreenElement = insight2d.require("screen.elements.screen_element")
 local ScreenLabel = insight2d.class("ScreenLabel", ScreenElement)
 
 function ScreenLabel:initialize(font, text, align, limit)

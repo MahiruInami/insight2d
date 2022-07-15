@@ -1,10 +1,7 @@
-local path = (...):gsub("base_scene", "")
-local lib_directory = path:gsub("scenes_management.", "")
-
-local AssetsManager = require (lib_directory .. "assets_manager.assets_manager")
-local Camera = require (lib_directory .. "scenes_management.camera")
-local InputManger = require (lib_directory .. "scenes_management.input_manager")
-local ScreenManager = require (lib_directory .. "screen.screen_manager")
+local AssetsManager = insight2d.require("assets_manager.assets_manager")
+local Camera = insight2d.require("scenes_management.camera")
+local InputManger = insight2d.require("scenes_management.input_manager")
+local ScreenManager = insight2d.require("screen.screen_manager")
 
 local BaseScene = insight2d.class("BaseScene")
 

@@ -1,7 +1,4 @@
-local path = (...):gsub("screen_tile_map", "")
-local lib_directory = path:gsub("screen.elements.", "")
-
-local ScreenElement = require (lib_directory .. "screen.elements.screen_element")
+local ScreenElement = insight2d.require("screen.elements.screen_element")
 
 local ScreenTileMap = insight2d.class("ScreenTileMap", ScreenElement)
 
