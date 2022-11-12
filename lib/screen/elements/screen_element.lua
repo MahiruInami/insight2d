@@ -14,6 +14,9 @@ function ScreenElement:initialize()
     self._is_visible = true
 
     self._is_dirty = false
+    self._is_normalized_position = false
+    self._normalized_x = 0
+    self._normalized_y = 0
     self._local_transform = love.math.newTransform(0, 0, 0, 1.0, 1.0)
 
     self._elements = {}
@@ -53,6 +56,8 @@ end
 function ScreenElement:addElement(element)
     element._parent = self
     table.insert(self._elements, element)
+
+    self:invalidate()
 end
 
 function ScreenElement:removeElement(element)
@@ -85,8 +90,21 @@ end
 function ScreenElement:setPosition(x, y)
     self._pos_x = x
     self._pos_y = y
+    self._is_normalized_position = false
 
     self:invalidate()
+end
+
+function ScreenElement:setNormalizedPosition(x, y)
+    self._is_normalized_position = true
+
+    self._normalized_x = x
+    self._normalized_y = y
+
+    if self._is_normalized_position and self._parent ~= nil then
+        self._pos_x = self._parent:getWidth() * self._normalized_x
+        self._pos_y = self._parent:getHeight() * self._normalized_y
+    end
 end
 
 function ScreenElement:setAnchor(x, y)
@@ -111,6 +129,12 @@ end
 
 function ScreenElement:invalidate()
     self._is_dirty = true
+
+    if self._elements ~= nil then
+        for i, v in pairs(self._elements) do
+            v:invalidate()
+        end
+    end
 end
 
 function ScreenElement:validate()
@@ -128,6 +152,12 @@ function ScreenElement:updateTransform()
 
     local offset_x = self._width * self._anchor_x
     local offset_y = self._height * self._anchor_y
+
+    if self._is_normalized_position and self._parent ~= nil then
+        self._pos_x = self._parent:getWidth() * self._normalized_x
+        self._pos_y = self._parent:getHeight() * self._normalized_y
+    end
+
     self._local_transform = love.math.newTransform(self._pos_x, self._pos_y, self._rotation, self._scale_x, self._scale_y)
     self._local_transform:translate(-offset_x, -offset_y)
 
