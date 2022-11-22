@@ -13,7 +13,9 @@ function AssetsManager:loadFont(font_name, path, size)
 end
 
 function AssetsManager:loadTexture(texture_name, path)
-    self._textures[texture_name] = love.graphics.newImage(path)
+    local texture = love.graphics.newImage(path)
+    self._textures[texture_name] = texture
+    return texture
 end
 
 function AssetsManager:loadQuads(texture_name, path)

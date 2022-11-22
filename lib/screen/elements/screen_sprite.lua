@@ -8,7 +8,8 @@ function ScreenSprite:initialize(texture, quad)
     self._texture = texture
     self._quad = quad
     if self._quad == nil then
-        self._quad = love.graphics.newQuad(0, 0, self._texture:getDimensions())
+        local width, height = self._texture:getDimensions()
+        self._quad = love.graphics.newQuad(0, 0, width, height, self._texture)
     end
     local x, y, w, h = self._quad:getViewport()
     self._width = w
